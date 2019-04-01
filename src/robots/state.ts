@@ -1,19 +1,15 @@
-const fs = require('fs');
+import * as fs from 'fs';
 
 const contentFilePath = './content.json';
 
-function save(content) {
+export function save(content) {
     const contentString = JSON.stringify(content);
     return fs.writeFileSync(contentFilePath, contentString);
 }
 
-function load() {
+export function load() {
     const fileBuffer = fs.readFileSync(contentFilePath, 'utf-8');
     const contentJson = JSON.parse(fileBuffer);
     return contentJson;
 }
 
-module.exports = {
-    save,
-    load
-}

@@ -1,10 +1,12 @@
-const readline = require('readline-sync');
-const state = require('./state.js');
+import * as readline from 'readline-sync';
+import * as  state from './state';
 
-function robot() {
+export function input() {
 
     const content = {
-        maximumSentences: 7
+        maximumSentences: 7,
+        searchTerm: '',
+        prefix: ''
     };
 
     content.searchTerm = askAndReturnSearchTerm();
@@ -26,5 +28,3 @@ function askAndReturnPrefix() {
 
     return prefixes[selectedPrefixIndex];
 }
-
-module.exports = robot;

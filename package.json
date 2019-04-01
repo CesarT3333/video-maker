@@ -17,9 +17,13 @@
   },
   "homepage": "https://github.com/CesarT3333/video-maker#readme",
   "dependencies": {
+    "@types/es6-promise": "^3.3.0",
     "algorithmia": "^0.3.10",
     "readline-sync": "^1.4.9",
     "sbd": "^1.0.14",
     "watson-developer-cloud": "^3.18.2"
+  },
+  "devDependencies": {
+    "typescript": "^3.4.1"
   }
 }
