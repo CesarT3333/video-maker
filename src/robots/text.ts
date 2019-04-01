@@ -1,24 +1,37 @@
-const algorithmia = require('algorithmia');
+import * as state from './state';
 
-const algorithmiaApiKey = require('../credentials/algorithmia.json').apiKey;
-const watsonApiKey = require('../credentials/watson-nlu.json').apikey;
+import * as sentenceBoundaryDetection from 'sbd';
 
-const sentenceBoundaryDetection = require('sbd');
+import * as algorithmia from 'algorithmia';
 
-const NaturalLanguageUnderstandingV1 = require('watson-developer-cloud/natural-language-understanding/v1.js');
+import * as algorithmiaCredentials from '../credentials/algorithmia.json';
+import * as watsonCredentials from '../credentials/watson-nlu.json';
 
-var nlu = new NaturalLanguageUnderstandingV1({
+const NaturalLanguageUnderstandingV1 =
+    require('watson-developer-cloud/natural-language-understanding/v1.js');
+
+const algorithmiaApiKey: string =
+    (<any>algorithmiaCredentials).apiKey;
+
+const watsonApiKey: string =
+    (<any>watsonCredentials).apikey;
+
+const nlu = new NaturalLanguageUnderstandingV1({
     iam_apikey: watsonApiKey,
     version: '2018-04-05',
     url: 'https://gateway.watsonplatform.net/natural-language-understanding/api/'
 });
 
-async function robot(content) {
+export async function text() {
+    const content = state.load();
+
     await fetchContentFromWikipedia(content);
     sanitilizeContent(content);
     breakContentIntoSequences(content);
     limitMaximumSentences(content);
     await fetchKeywordsOfAllSentences(content);
+
+    state.save(content);
 }
 
 async function fetchContentFromWikipedia(content) {
@@ -103,5 +116,3 @@ function breakContentIntoSequences(content) {
         }));
 
 }
-
-module.exports = robot;
