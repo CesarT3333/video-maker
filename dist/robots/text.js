@@ -42,14 +42,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var state = require('./state.js');
+var state = __importStar(require("./state"));
 var sentenceBoundaryDetection = __importStar(require("sbd"));
 var algorithmia = __importStar(require("algorithmia"));
 var algorithmiaCredentials = __importStar(require("../credentials/algorithmia.json"));
 var watsonCredentials = __importStar(require("../credentials/watson-nlu.json"));
+var NaturalLanguageUnderstandingV1 = require('watson-developer-cloud/natural-language-understanding/v1.js');
 var algorithmiaApiKey = algorithmiaCredentials.apiKey;
 var watsonApiKey = watsonCredentials.apikey;
-var NaturalLanguageUnderstandingV1 = require('watson-developer-cloud/natural-language-understanding/v1.js');
 var nlu = new NaturalLanguageUnderstandingV1({
     iam_apikey: watsonApiKey,
     version: '2018-04-05',

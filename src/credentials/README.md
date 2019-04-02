@@ -1,3 +1,14 @@
+### Google Search
+
+File: `google-search.json`
+
+```
+{
+    "apiKey": "AIzaSyDCkzaInO6tCqlgh0GJGmK6eWM4Ldn64iw",
+    "searchEngineId": " 015489445114018019169:i3o7vjqjejs "
+}
+```
+
 ## Algorithmia
 
 File: `algorithmia.json`
