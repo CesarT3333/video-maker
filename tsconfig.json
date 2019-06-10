@@ -9,10 +9,11 @@
     "esModuleInterop": true,
     "lib": [
       "es2015",
+      "dom"
     ],
-    "outDir": "./dist",
+    "outDir": "./dist"
   },
   "include": [
     "./src/**/*"
-  ],
+  ]
 }
